@@ -1,0 +1,63 @@
+/* dodani css */
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 1em;
+  }
+  
+  .photo-card {
+    text-align: center;
+  }
+  
+  .photo-box {  
+      width: 12.5em;
+      height: 12.5em;        
+      margin: auto;
+      object-fit: cover;
+  }
+  
+  .photo-box-title {
+    font-size: 1.8em;
+  }
+
+
+  .flex-container{
+    background-color: #f7f7f7;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    width: 60em;
+    margin: auto;
+    margin-top: 1em;
+    overflow: hidden;
+    border-radius: 5px 30px 30px 5px;
+  }
+
+  .item{
+    color: #ab4f8b;
+    border-radius: 0px 30px 30px 0px;
+    border-right: 5px solid #ab4f8b;
+    width: 15em;
+    height: 3em;
+    overflow: hidden;
+    line-height: 3em;
+    padding-left: 10px;
+  }
+
+  .item-order{
+    color: #ffffff;
+    background-color: #e0aacd;
+    border-radius: 0px 30px 30px 0px;    
+    border-right: 5px solid #ab4f8b;
+    width: 15em;
+    height: 3em;
+    overflow: hidden;
+    line-height: 3em;    
+    padding-left: 2em;
+  }
+
+.item-text{
+  padding-right: 9em;
+  font-weight: bold;
+}

@@ -24,10 +24,6 @@ public class MyHeuristicNode extends MyNode
         return fFunction;
     }
 
-    public MyHeuristicNode getHParent() {
-        return parent;
-    }
-
     public String getState(){
         return this.state;
     }

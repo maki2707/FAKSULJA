@@ -13,11 +13,15 @@ public class CheckHeuristics
     public static void checkIfConsistent(HashMap<String, HashMap<String, Integer>> succ, Path hpath) throws FileNotFoundException
     {
         hDescMap = Parsers.readHeuristicDescData(hpath);
-        AtomicBoolean pass = new AtomicBoolean(true); /*has to be AtomicBoolean because of using lambda expression*/
+        AtomicBoolean pass = new AtomicBoolean(true);
 
         for (Map.Entry<String, HashMap<String, Integer>> func : succ.entrySet())
         {
-            func.getValue().forEach(((String neighbour, Integer cost) -> {
+            for(Map.Entry<String, Integer> pairs : func.getValue().entrySet())
+            {
+                String neighbour = pairs.getKey();
+                Integer cost = pairs.getValue();
+
                 if(hDescMap.get(func.getKey())<= hDescMap.get(neighbour) + cost)
                 {
                     System.out.print("[CONDITION]: [OK] ");
@@ -33,8 +37,7 @@ public class CheckHeuristics
                 part2.append(" <= ");
                 part2.append(hDescMap.get(neighbour) + " + " + cost + ".0");
                 System.out.println(part2);
-
-            }));
+            }
         }
         if(pass.get())
         {

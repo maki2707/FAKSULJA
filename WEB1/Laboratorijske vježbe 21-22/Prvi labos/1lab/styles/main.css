@@ -339,27 +339,4 @@ body {
   min-height: 100%;
 }
 
-/* dodani css */
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 1em;
-}
-
-.photo-card {
-  text-align: center;
-}
-
-.photo-box {  
-    width: 12.5em;
-    height: 12.5em;  
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: auto;
-}
-
-.photo-box-title {
-  font-size: 1.8em;
-}

@@ -1,0 +1,32 @@
+SIGURNOST RAČUNALNIH SUSTAVA, 2021/2022
+PRVA LABORATORIJSKA VJEŽBA: SIMETRIČNA KRIPTOGRAFIJA 
+
+U sklopu prve laboratorijske vježbe dizajnirao sam i implementirao prototip alata za pohranu zaporki pritom koristeći simetričnu kriptografiju.
+
+Zadatak je bio izvesti ovaj alat korištenjem simetrične kriptografije, što znači da se prilikom enkripcije i dekripcije koristi isti tajni ključ. 
+Dakle, bilo je potrebno osigurati da funkcije za enkripciju i dekripciju mogu koristiti isti tajni ključ. Pomoću klasa "SecretKey" i "SecretKeyFactory" generiran je AES kriptografski ključ,
+koji je deriviran iz glavne zaporke uz pomoć klase "PBEKeySpec" klase te salta(dobivenog kriptografskog metodom za generator slučajnih brojeva). 
+Enkripcija i dekripcija se vrši pomoću tajnog ključa i IV-a koji je također pseudoslučajno generiran.
+Algoritam korišten prilikom enkripcije jest "AES/GCM/NoPadding".
+Koristio sam tekstualnu datoteku za pohranu šifrata. Jedan readak u toj datoteci je oblika : | salt + IV + kriptat |, a sami kriptat je oblika : | zaporka + 'đ' + domena|. Tako dobiveni zapis se prije 
+pohrane u datoteku enkodira pomoću "Base64". Zapis se pohranjuje na kraj datoteke, ali je omogućena zamjena s retkom koji sadrži istu domenu, na taj način omogućavajući promjenu lozinke.
+
+Glavna zaporka se ne sprema nigdje, nego se tijekom enkripcije retka u datoteci može otkriti da unesena lozinka ne odgovara onoj kojom je alat inicijaliziran.
+Ako dođe do promjene redaka u datoteci, korisnika će se obavijestiti da je došlo do mogućeg proboja.
+Ako korisnik unese krivu glavnu lozinku, također će ga se obavijestiti.
+
+Za pokretanje na OS Windows potrebno unutar terminala:
+1. pozicionirati se u direktorij koji sadrži PasswordManager.java datoteku
+
+2. upisati > javac PasswordManager.java
+
+3. java PasswordManager |argumenti|
+
+Opis mogućih argumenata:
+
+>>> java PasswordManager init masterPassword							- inicijalizacija alata i stvaranje prazne baze
+>>> java PasswordManager put masterPassword testlozinka testdomena		- pohrana zaporke za domenu "testdomena"
+>>> java PasswordManager get masterPassword testdomena					- dohvat zaporke za domenu "testdomena"
+	
+
+

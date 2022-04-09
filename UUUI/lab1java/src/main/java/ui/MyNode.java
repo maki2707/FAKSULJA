@@ -7,13 +7,11 @@ public class MyNode implements Comparable<MyNode>
 {
     public String state;
     public MyNode parent;
-    public int depth;
     public int cost;
 
     public MyNode(String state, MyNode parent, int cost) {
         this.state = state;
         this.parent = parent;
-        this.depth = parent == null ? 0 : this.parent.depth+1;
         this.cost = parent == null ? cost : this.parent.cost + cost;
     }
 
