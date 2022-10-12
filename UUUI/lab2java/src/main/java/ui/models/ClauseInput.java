@@ -2,6 +2,11 @@ package ui.models;
 
 import java.util.List;
 
+/**
+ * models of a whole problem
+ * has a list of all initial clauses and the goal clause in its initial state
+ */
+
 public class ClauseInput
 {
     private List<Clause> clauses;

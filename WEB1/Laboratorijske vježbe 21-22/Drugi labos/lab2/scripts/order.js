@@ -1,5 +1,5 @@
 function addToCart(id) {
-	/*//PRIPREMA
+	//PRIPREMA
 
 	console.log(id);
 
@@ -22,23 +22,7 @@ function addToCart(id) {
 	cart[id]++;
 	localStorage.setItem("cart", JSON.stringify(cart));
 
-	//PRIPREMA*/
-
-	/*let value = localStorage.getItem(id);
-	value = JSON.parse(value);
-	localStorage.setItem(id, JSON.stringify(value+1));*/
-
-	if( localStorage.getItem(id)===null)
-	{
-		localStorage.setItem(id,1);
-	}
-	else
-	{
-		let num = parseInt(localStorage.getItem(id),10)+1;
-		localStorage.setItem(id,num);
-	}
-
-
+	//PRIPREMA
 	refreshCartItems();
 };
 
@@ -76,9 +60,7 @@ let addCategories = async function (data) {
 		let productID = products[index].id;	
 
 		let productCartButton = product.querySelector(".cart-btn");		
-		/*productCartButton.onclick = function() {addToCart(productID)};*/
-
-		productCartButton.onclick = () => addToCart(productID);
+		productCartButton.onclick = function() {addToCart(productID)};		
 
 		gallery.appendChild(product);
 	}

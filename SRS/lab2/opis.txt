@@ -1,0 +1,41 @@
+Filip Marčec, 0036525149
+SRS - 2.laboratorijska vježba
+
+
+UPUTE ZA UPOTREBU
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Za pokretanje na OS Windows potrebno unutar terminala:
+1. pozicionirati se u direktorij koji sadrži "usermgmt.java" i "login.java" datoteke (\lab2\src)
+2. u terminal upisati > javac usermgmt.java 
+					  > javac login.java
+3. java usermgmt |arguementi|
+   java login |arguementi|
+   
+Opis mogućih argumenata:
+
+ADMINISTRATOR
+>>> java usermgmt add <username>				dodavanje novog korisnika u bazu podataka
+>>> java usermgmt passwd <username>				promjena zaporke za korisnika
+>>> java usermgmt forcepass <username>			postavljanje zastavice za korisnika koji će prilikom sljedeće uspješne prijave morati promijeniti zaporku
+>>> java usermgmt del <username>				brisanje korisnika iz baze podataka
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+KORISNIK
+>>> >>> java login login <username>				prijava korisnika
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Implementirao sam 2 alata, jedan koji služi za upravljanje lozinkama i korisničkim imenima te je namijenjen za korištenje administratorima, te drugi alat koji služi za prijavu korisnika.
+Korištena je "PBKDF2" hash funkcija za hashiranje zaporki i spremanje u datoteku.
+U tekstualnu datoteku su u Base64 formatu pohranjeni retci u sljedećem obliku: <username>đ<hashiranalozinka>salt<flag>. Flag je zastavica korištena za signalizaciju korisniku ako je potrebno promijeniti
+zaporku prilikom sljedeće uspješne prijave.
+
+Korištenjem metode readPassword() iz razreda Console osigurano je da se prilikom unošenja zaporke ne pojavljuje nikakav tekst ili znakovi.
+Unutar alata implementirana je i metoda za provjeravanje kompleksnosti unešene zaporke. Postavljena ograničenja su: minimalno 8 znakova, barem jedno veliko slovo, barem jedan ne alfa-numerički znak
+te barem jedna znamenka. Na taj način se otežava pogađanje zaporki i kod online i kod offline napada.
+Korisniku je omogućen unos zaporke 3 puta prije nego se program prekine te će korisniku u tom slučaju morati ponovno pokrenuti alat za prijavu.
+
+Postojeći mehanizmi koji nisu implementirani
+	>> uvođenje vremena čekanja nakon svakog neuspjelog pokušaja prijave koje se povećava nakon svakog neuspjelog pokušaja	
+	>> nakon zadanog broja neuspjelih prijava korisnički račun se zaključava i zahtjeva se da administrator poduzme nešto
+
+Navedeni mehanizmi služe za sprečavanje online pogađanja, a kako je naš alat namijenje offline okruženju, ti mehanizmi ne bi imali utjecaj na naše alate. 

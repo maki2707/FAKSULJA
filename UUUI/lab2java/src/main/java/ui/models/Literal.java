@@ -3,7 +3,7 @@ package ui.models;
 import java.util.Objects;
 
 /**
- * class which represents a model for a signe literal
+ * class which represents a model for a single literal
  */
 public class Literal implements Comparable<Literal>
 {

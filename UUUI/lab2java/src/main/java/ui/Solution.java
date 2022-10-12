@@ -1,9 +1,9 @@
 package ui;
 
-import ui.models.Clause;
 import ui.models.ClauseInput;
-import ui.parsers.FileParser;
-import ui.resolution.Resolution;
+import ui.parsers.RegularParser;
+import ui.algorithms.Resolution;
+import ui.algorithms.CookingResolution;
 
 import java.io.FileNotFoundException;
 
@@ -17,8 +17,12 @@ public class Solution
         {
             case "resolution" ->
                     {
-                        ClauseInput starter = FileParser.parseResolution(args[1]);
+                        ClauseInput starter = RegularParser.parseResolution(args[1]);
                         Resolution.plResolution(starter);
+                    }
+            case "cooking" ->
+                    {
+                        CookingResolution.setUpCookBook(args[1], args[2]);
                     }
         }
     }

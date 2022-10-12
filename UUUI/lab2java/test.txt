@@ -1,4 +1,6 @@
-~A V B
-~B V C
-A
-C v B
+~A v B v C
+B
+~A v ~C
+A v ~B v ~C
+B v C
+~C
